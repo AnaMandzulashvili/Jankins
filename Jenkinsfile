@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('error') {
       parallel {
-        stage('error') {
+        stage('stage1') {
           steps {
             bat(script: 'mvn clean test', returnStatus: true)
           }
