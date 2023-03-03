@@ -1,9 +1,20 @@
 pipeline {
   agent any
   stages {
-    stage('') {
-      steps {
-        bat(script: 'mvn clean test', returnStatus: true)
+    stage('error') {
+      parallel {
+        stage('error') {
+          steps {
+            bat(script: 'mvn clean test', returnStatus: true)
+          }
+        }
+
+        stage('stage 2') {
+          steps {
+            bat(script: 'mvn version', returnStatus: true)
+          }
+        }
+
       }
     }
 
